@@ -1,11 +1,11 @@
 const mongoose = require ('mongoose')
 
 const userSchema = mongoose.Schema({
-    firstName:{
+    first_Name:{
         type:String,
         required:[true,"field cannot be empty"]
     },
-    lastName:{
+    last_Name:{
         type:String,
         required:[true,"field cannot be empty"]
     },
@@ -17,11 +17,11 @@ const userSchema = mongoose.Schema({
         type:String,
         required:[true,"field cannot be empty"]
     },
-    dateOfBirth:{
+    date_Of_Birth:{
         type:String,
         required:[true,"field cannot be empty"]
     },
-    phoneNumber:{
+    phone_Number:{
         type:String,
         required:[true,"fields cannot be empty"]
     }
