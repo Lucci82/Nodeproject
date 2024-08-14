@@ -11,6 +11,7 @@ app.use(express.json())
 app.get('/',(req,res)=>{
     res.send("server home page")
 })
+    
 
 
 mongoose.connect(process.env.MONGO_URL)
