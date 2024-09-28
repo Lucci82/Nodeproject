@@ -1,85 +1,53 @@
-// const mongoose = require('mongoose')
-
-// const UserSchema = mongoose.Schema({
-//     firstName:{
-//         type:String,
-//         required:[true,'firstName is required']
-//     },
-//     lastName:{
-//         type:string,
-//         required:[true,'lastName is required']
-//     },
-//     Gender:{
-//         type:string,
-//         required:[true,'Gender is required']
-//     },
-//     dateOfBirthL:{
-//         type:string,
-//         required:[true,'dateOfBirth is required']
-//     },
-//     Email:{
-//         type:string,
-//         required:[true,'Email is required']
-//     },
-//     phoneNumber:{
-//         type:string,
-//         required:[true,'phoneNumber is required']
-//     },
-//     password:{
-//         type:string,
-//         required:[true,'password is required'],
-//         minLength:[8,'password must not be less than 8 characters']
-//     },
-// },{
-//     Timestamp:true
-// })
-
-
-
-
-
-
-
-// const User = mongoose.model('User', UserSchema)
-// module.exports = User
-
-
-const mongoose = require('mongoose');
-
+const mongoose = require('mongoose')
 const UserSchema = mongoose.Schema({
-    firstName: {
-        type: string,
-        required: [true, 'First name is required']
+    Firstname:{
+        type:String,
+        required:[true, 'Firstname is required']
     },
-    lastName: {
-        type: String,
-        required: [true, 'Last name is required']
+    Lastname:{
+        type:String,
+        required:[true, 'Lastname is required']
     },
-    gender: {
-        type: string,
-        required: [true, 'Gender is required']
+    Email:{
+        type:String,
+        required:[true, 'Email is required'],
+        unique:true
     },
-    dateOfBirth: {
-        type: Date, 
-        required: [true, 'Date of birth is required']
+    PhoneNo:{
+        type:Number,
+        required:[true, 'Phone Number is required'],
+        minLength:[10, 'insert your country code first'],
+        unique:true
     },
-    email: {
-        type: string,
-        required: [true, 'Email is required'],
-        unique: true, 
-        match: [/.+\@.+\..+/, 'Please enter a valid email address'] 
+    Username:{
+        type:String,
+        required:[true, 'Username is required'],
+        minLength:[6, 'Username wil be displayed to other users, therefore, must be your Known name'],
+        unique:true
     },
-    phoneNumber: {
-        type: string,
-        required: [true, 'Phone number is required']
+    DateOfBirth:{
+        type:String,
+        required:[true, 'You Must Be 18+ years']
     },
-    password: {
-        type: string,
-        required: [true, 'Password is required'],
-        minlength: [8, 'Password must not be less than 8 characters']
-    }
-}, {
-    timestamps: true 
-});
+    Gender:{
+        type:String,
+        required:[true, 'Male or Female Only']
+    },
+    Password:{
+        type:String,
+        required:[true,'password is required'],
+        minLength:[8,'password must not be less than 8 characters']
+    },
+    Interests:[{
+        type:String,
+        enum:[
+         
+        ],
+        // default:[],
+        required:[true, ' You Must Select At Least Three Of The Following Interests.']
+    }]
+})
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('user',UserSchema)
+
+module.exports = User 
